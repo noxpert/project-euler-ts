@@ -4,14 +4,14 @@
 
 import { isDivisible } from "./math-utils";
 
-let problem01_sum: number = 0;
+let problem01Sum: number = 0;
 for (let num = 1; num < 1000; num++) {
     if (isDivisible(num, 3)) {
-        problem01_sum += num;
+        problem01Sum += num;
     } else if (isDivisible(num, 5)) {
-        problem01_sum += num;
+        problem01Sum += num;
     }
 }
-console.log(problem01_sum);
+console.log(problem01Sum);
 
 // Answer 233168

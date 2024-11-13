@@ -7,16 +7,16 @@ import {isDivisible} from "./math-utils";
 let value1: number = 0;
 let value2: number = 1;
 let fibonacci: number = 0;
-let problem02_sum: number = 0;
+let problem02Sum: number = 0;
 
 while (value1 + value2 < 4000000) {
     fibonacci = value1 + value2;
     value1 = value2;
     value2 = fibonacci;
     if (isDivisible(fibonacci, 2)) {
-        problem02_sum += fibonacci;
+        problem02Sum += fibonacci;
     }
 }
-console.log(problem02_sum);
+console.log(problem02Sum);
 
 // Answer 4613732
