@@ -2,12 +2,14 @@
 // The sum of these multiples is 23.
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
+import { isDivisible } from "./math-utils";
+
 let problem01_sum: number = 0;
-for (let i = 1; i < 1000; i++) {
-    if (i % 3 === 0) {
-        problem01_sum += i;
-    } else if (i % 5 === 0) {
-        problem01_sum += i;
+for (let num = 1; num < 1000; num++) {
+    if (isDivisible(num, 3)) {
+        problem01_sum += num;
+    } else if (isDivisible(num, 5)) {
+        problem01_sum += num;
     }
 }
 console.log(problem01_sum);

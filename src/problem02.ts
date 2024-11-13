@@ -2,6 +2,8 @@
 // By starting with 1 and 2, the first 10 terms will be: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
 // By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 // find the sum of the even-valued terms.
+import {isDivisible} from "./math-utils";
+
 let value1: number = 0;
 let value2: number = 1;
 let fibonacci: number = 0;
@@ -11,7 +13,7 @@ while (value1 + value2 < 4000000) {
     fibonacci = value1 + value2;
     value1 = value2;
     value2 = fibonacci;
-    if (fibonacci % 2 === 0) {
+    if (isDivisible(fibonacci, 2)) {
         problem02_sum += fibonacci;
     }
 }
