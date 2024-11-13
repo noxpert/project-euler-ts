@@ -2,21 +2,21 @@
 // By starting with 1 and 2, the first 10 terms will be: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
 // By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 // find the sum of the even-valued terms.
-import {isDivisible} from "./math-utils";
+import { isEven } from "./math-utils";
 
-let value1: number = 0;
-let value2: number = 1;
-let fibonacci: number = 0;
-let problem02Sum: number = 0;
+export function sumEvenFibonacci(max: number): number {
+    let value1: number = 0;
+    let value2: number = 1;
+    let fibonacci: number = 0;
+    let problem02Sum: number = 0;
 
-while (value1 + value2 < 4000000) {
-    fibonacci = value1 + value2;
-    value1 = value2;
-    value2 = fibonacci;
-    if (isDivisible(fibonacci, 2)) {
-        problem02Sum += fibonacci;
+    while (value1 + value2 < max) {
+        fibonacci = value1 + value2;
+        value1 = value2;
+        value2 = fibonacci;
+        if (isEven(fibonacci)) {
+            problem02Sum += fibonacci;
+        }
     }
+    return problem02Sum;
 }
-console.log(problem02Sum);
-
-// Answer 4613732

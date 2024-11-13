@@ -3,14 +3,15 @@
 // Find the sum of all the multiples of 3 or 5 below 1000.
 import { isDivisible } from "./math-utils";
 
-let problem01Sum: number = 0;
-for (let num = 1; num < 1000; num++) {
-    if (isDivisible(num, 3)) {
-        problem01Sum += num;
-    } else if (isDivisible(num, 5)) {
-        problem01Sum += num;
+export function sumOfMultiples(max: number, ...multiples: number[]): number {
+    let sum: number = 0;
+    for (let num = 1; num < max; num++) {
+        for (let possibleMultiple of multiples) {
+            if (isDivisible(num, possibleMultiple)) {
+                sum += num;
+                break;
+            }
+        }
     }
+    return sum;
 }
-console.log(problem01Sum);
-
-// Answer 233168
