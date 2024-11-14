@@ -1,6 +1,6 @@
 import { arrayOfPrimes } from "../src/problem07";
 
-describe("Unit tests for problem06", () => {
+describe("Unit tests for problem07", () => {
     it("Test example works", () => {
         let answer:number[] = arrayOfPrimes(6);
         expect(answer.at(-1)).toBe(13);
