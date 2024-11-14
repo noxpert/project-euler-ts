@@ -11,10 +11,26 @@ export function isOdd(value: number): boolean {
 }
 
 export function isPrime(value: number): boolean {
-    for (let num = 2; num < value / 2; num++) {
+    for (let num: number = 2; num < value / 2; num++) {
         if (isDivisible(value, num)) {
             return false;
         }
     }
     return true;
+}
+
+export function sumOfSquares(floor: number, ceiling: number): number {
+    let sumOfSquares: number = 0;
+    for (let num:number = floor; num <= ceiling; num++) {
+        sumOfSquares += num * num
+    }
+    return sumOfSquares;
+}
+
+export function squareOfSums(floor: number, ceiling: number): number {
+    let sum: number = 0;
+    for (let num:number = floor; num <= ceiling; num++) {
+        sum += num
+    }
+    return sum * sum;
 }
