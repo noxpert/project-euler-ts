@@ -9,7 +9,6 @@ describe("Unit tests for problem09", () => {
     it("Test solution", () => {
         let answer:number[] = findPythagoreanTripletWithSum(1000);
         expect(answer).toEqual([200, 375, 425]);
-        console.log(`Answer is ${answer[0] * answer[1] * answer[2]}`);
     })
 
 })
