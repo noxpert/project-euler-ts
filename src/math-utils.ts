@@ -11,6 +11,9 @@ export function isOdd(value: number): boolean {
 }
 
 export function isPrime(value: number): boolean {
+    if (value === 1) {
+        return false;
+    }
     for (let num: number = 2; num <= value / 2; num++) {
         if (isDivisible(value, num)) {
             return false;
