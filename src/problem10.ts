@@ -4,8 +4,14 @@
 import { isPrime } from "./math-utils";
 
 export function sumOfPrimes(ceiling: number): number {
-    let sum = 0;
-    for (let num: number = 1; num < ceiling ; num++) {
+    if (ceiling < 2) {
+        return 0;
+    } else if (ceiling < 3) {
+        return 2;
+    }
+    let sum = 5;
+
+    for (let num: number = 5; num < ceiling ; num += 2) {
         if (isPrime(num)) {
             sum += num;
         }
