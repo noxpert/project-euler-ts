@@ -28,6 +28,15 @@
 
 import { productOfNumbers } from "./math-utils";
 
+function calculateProduct(possibleGreatestProduct: number, currentNumbers: number[]) :number {
+    let currentProduct: number = productOfNumbers(currentNumbers);
+    if (currentProduct > possibleGreatestProduct) {
+        return currentProduct;
+    } else {
+        return possibleGreatestProduct;
+    }
+}
+
 export function greatestProduct(numberMatrix: number[][], values: number) : number {
     let possibleGreatestProduct: number = 0;
 
@@ -38,10 +47,7 @@ export function greatestProduct(numberMatrix: number[][], values: number) : numb
             for (let k = j; k < j + values; k++) {
                 currentNumbers.push(numberMatrix[i][k])
             }
-            let currentProduct: number = productOfNumbers(currentNumbers);
-            if (currentProduct > possibleGreatestProduct) {
-                possibleGreatestProduct = currentProduct;
-            }
+            possibleGreatestProduct = calculateProduct(possibleGreatestProduct, currentNumbers);
         }
     }
     // Next look across columns
@@ -51,11 +57,7 @@ export function greatestProduct(numberMatrix: number[][], values: number) : numb
             for (let k = i; k < i + values; k++) {
                 currentNumbers.push(numberMatrix[k][j])
             }
-            let currentProduct: number = productOfNumbers(currentNumbers);
-            if (currentProduct > possibleGreatestProduct) {
-                possibleGreatestProduct = currentProduct;
-            }
-        }
+            possibleGreatestProduct = calculateProduct(possibleGreatestProduct, currentNumbers);        }
     }
     // Next check one diagonal
     for (let i = 0; i <= numberMatrix.length - values; i++) {
@@ -64,10 +66,7 @@ export function greatestProduct(numberMatrix: number[][], values: number) : numb
             for (let k = 0; k < values; k++) {
                 currentNumbers.push(numberMatrix[i + k][j + k])
             }
-            let currentProduct: number = productOfNumbers(currentNumbers);
-            if (currentProduct > possibleGreatestProduct) {
-                possibleGreatestProduct = currentProduct;
-            }
+            possibleGreatestProduct = calculateProduct(possibleGreatestProduct, currentNumbers);
         }
     }
     // Finally check other diagonal
@@ -77,10 +76,7 @@ export function greatestProduct(numberMatrix: number[][], values: number) : numb
             for (let k = 0; k < values; k++) {
                 currentNumbers.push(numberMatrix[i - k][j + k])
             }
-            let currentProduct: number = productOfNumbers(currentNumbers);
-            if (currentProduct > possibleGreatestProduct) {
-                possibleGreatestProduct = currentProduct;
-            }
+            possibleGreatestProduct = calculateProduct(possibleGreatestProduct, currentNumbers);
         }
     }
     return possibleGreatestProduct;
