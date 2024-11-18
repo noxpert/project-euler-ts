@@ -57,3 +57,7 @@ export function squareOfSums(floor: number, ceiling: number): number {
     }
     return sum * sum;
 }
+
+export function productOfNumbers(numberArray: number[]): number {
+    return numberArray.reduce((a, b) => a * b, 1);
+}
