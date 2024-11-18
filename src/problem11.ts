@@ -28,56 +28,66 @@
 
 import { productOfNumbers } from "./math-utils";
 
-function calculateProduct(possibleGreatestProduct: number, currentNumbers: number[]) :number {
-    let currentProduct: number = productOfNumbers(currentNumbers);
-    if (currentProduct > possibleGreatestProduct) {
-        return currentProduct;
-    } else {
-        return possibleGreatestProduct;
+class NumberProduct {
+    numbers: number[];
+    greatestProduct: number;
+    
+    constructor() {
+        this.numbers = [];
+        this.greatestProduct = 0;
+    }
+    
+    addNumber(newNumber: number): void {
+        this.numbers.push(newNumber);
+    }
+    
+    calculateProduct(): void {
+        let currentProduct: number = productOfNumbers(this.numbers);
+        if (currentProduct > this.greatestProduct) {
+            this.greatestProduct = currentProduct;
+        }
+        this.numbers = [];
     }
 }
 
-export function greatestProduct(numberMatrix: number[][], values: number) : number {
-    let possibleGreatestProduct: number = 0;
+export function greatestProduct(numberMatrix: number[][], values: number): number {
+    let result: NumberProduct = new NumberProduct();
 
     // First look across rows
     for (let i = 0; i < numberMatrix.length; i++) {
         for (let j = 0; j <= numberMatrix[i].length - values; j++) {
-            let currentNumbers: number[] = [];
             for (let k = j; k < j + values; k++) {
-                currentNumbers.push(numberMatrix[i][k])
+                result.addNumber(numberMatrix[i][k])
             }
-            possibleGreatestProduct = calculateProduct(possibleGreatestProduct, currentNumbers);
+            result.calculateProduct();
         }
     }
     // Next look across columns
     for (let i = 0; i <= numberMatrix.length - values; i++) {
         for (let j = 0; j < numberMatrix[i].length; j++) {
-            let currentNumbers: number[] = [];
             for (let k = i; k < i + values; k++) {
-                currentNumbers.push(numberMatrix[k][j])
+                result.addNumber(numberMatrix[k][j])
             }
-            possibleGreatestProduct = calculateProduct(possibleGreatestProduct, currentNumbers);        }
+            result.calculateProduct();
+        }
     }
     // Next check one diagonal
     for (let i = 0; i <= numberMatrix.length - values; i++) {
         for (let j = 0; j <= numberMatrix[i].length - values; j++) {
-            let currentNumbers: number[] = [];
             for (let k = 0; k < values; k++) {
-                currentNumbers.push(numberMatrix[i + k][j + k])
+                result.addNumber(numberMatrix[i + k][j + k])
             }
-            possibleGreatestProduct = calculateProduct(possibleGreatestProduct, currentNumbers);
+            result.calculateProduct();
         }
     }
     // Finally check other diagonal
     for (let i = values; i < numberMatrix.length; i++) {
         for (let j = 0; j <= numberMatrix[i].length - values; j++) {
-            let currentNumbers: number[] = [];
             for (let k = 0; k < values; k++) {
-                currentNumbers.push(numberMatrix[i - k][j + k])
+                result.addNumber(numberMatrix[i - k][j + k])
             }
-            possibleGreatestProduct = calculateProduct(possibleGreatestProduct, currentNumbers);
+            result.calculateProduct();
         }
     }
-    return possibleGreatestProduct;
+    return result.greatestProduct;
 }
