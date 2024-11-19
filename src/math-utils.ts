@@ -61,3 +61,26 @@ export function squareOfSums(floor: number, ceiling: number): number {
 export function productOfNumbers(numberArray: number[]): number {
     return numberArray.reduce((a, b) => a * b, 1);
 }
+
+export function factorsOfNumber(number: number): number[] {
+    let factors: number[] = [1]
+    if (number > 1) {
+        factors.push(number);
+    }
+    for (let possibleFactor: number = 2; possibleFactor <= Math.sqrt(number); possibleFactor++) {
+        if (isDivisible(number, possibleFactor)) {
+            if (factors.includes(possibleFactor)) {
+                // Do not add if already present
+            } else {
+                factors.push(possibleFactor);
+            }
+            let reciprocalFactor = number / possibleFactor;
+            if (factors.includes(reciprocalFactor)) {
+                // Do not add if already present
+            } else {
+                factors.push(reciprocalFactor);
+            }
+        }
+    }
+    return factors.sort((a: number, b: number): number => a - b);
+}
