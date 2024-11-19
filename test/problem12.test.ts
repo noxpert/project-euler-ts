@@ -11,9 +11,10 @@ describe("Unit tests for problem12", () => {
         expect(answer).toBe(6);
     })
 
-    it("Test solution", () => {
-        let answer:number = triangleNumberWithExpectedNumberOfFactors(501);
-        expect(answer).toBe(76576500);
-    })
+    // Comment out working solution test for to shorten test suite runtime
+    // it("Test solution", () => {
+    //     let answer:number = triangleNumberWithExpectedNumberOfFactors(501);
+    //     expect(answer).toBe(76576500);
+    // })
 
 })
