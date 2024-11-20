@@ -1,4 +1,4 @@
-import { isPrime, factorsOfNumber, productOfNumbers } from "../src/math-utils";
+import { isPrime, factorsOfNumber, generateCollatzSequence, productOfNumbers } from "../src/math-utils";
 
 describe("Unit tests for isPrime", () => {
     it("Test single digit numbers", () => {
@@ -52,6 +52,15 @@ describe("Unit tests for factorsOfNumber", () => {
         expect(factorsOfNumber(333)).toEqual([1, 3, 9, 37, 111, 333]);
         expect(factorsOfNumber(1000)).toEqual([1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 125, 200, 250, 500, 1000]);
         expect(factorsOfNumber(104743)).toEqual([1, 104743]);
+    })
+
+})
+
+describe("Unit tests for generateCollatzSequence", () => {
+    it("Test Collatz sequence generation", () => {
+        expect(generateCollatzSequence(1)).toEqual([1]);
+        expect(generateCollatzSequence(2)).toEqual([2, 1]);
+        expect(generateCollatzSequence(3)).toEqual([3, 10, 5, 16, 8, 4, 2, 1]);
     })
 
 })

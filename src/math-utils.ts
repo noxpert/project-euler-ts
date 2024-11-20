@@ -84,3 +84,17 @@ export function factorsOfNumber(number: number): number[] {
     }
     return factors.sort((a: number, b: number): number => a - b);
 }
+
+export function generateCollatzSequence(initialValue: number): number[] {
+    let sequence: number[] = [initialValue];
+    let currentValue: number = initialValue;
+    while (currentValue > 1) {
+        if (isEven(currentValue)) {
+            currentValue = currentValue / 2;
+        } else {
+            currentValue = currentValue * 3 + 1;
+        }
+        sequence.push(currentValue);
+    }
+    return sequence;
+}
