@@ -6,7 +6,7 @@ describe("Unit tests for problem10", () => {
         expect(answer).toBe(17);
     })
 
-    // Commenting out so test suite runs faster
+    // Comment out working solution test to shorten test suite runtime
     // it("Test solution", () => {
     //     let answer:number = sumOfPrimes(2_000_000);
     //     expect(answer).toBe(142913828922);
