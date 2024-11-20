@@ -1,6 +1,6 @@
 import { pathsThroughGrid } from "../src/problem15";
 
-describe("Unit tests for problem14", () => {
+describe("Unit tests for problem15", () => {
     it("Test small values where width equals depth", () => {
         expect(pathsThroughGrid(0, 0)).toBe(1);
         expect(pathsThroughGrid(1, 1)).toBe(2);
