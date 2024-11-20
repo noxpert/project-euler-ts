@@ -42,7 +42,7 @@ export function pathsThroughGrid(width: number, depth: number): number {
 
 // Takes ~1 seconds on M1 Pro MBP
 function recursiveWithCaching(width: number, depth: number): number {
-    if (width === 1 || depth === 1) {
+    if (width === 0 || depth === 0) {
         return 1;
     }
     for (let i = 0; i < cache.length; i++) {
