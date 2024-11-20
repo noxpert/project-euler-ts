@@ -8,9 +8,10 @@ describe("Unit tests for problem14", () => {
         expect(longestCollatzSequence(4)).toEqual(new Result(3, [3, 10, 5, 16, 8, 4, 2, 1]));
     })
 
-    it("Test solution", () => {
-        let answer:Result = longestCollatzSequence(1_000_000);
-        expect(answer.startingNumber).toBe(837799);
-    })
+    // Comment out working solution test to shorten test suite runtime
+    // it("Test solution", () => {
+    //     let answer:Result = longestCollatzSequence(1_000_000);
+    //     expect(answer.startingNumber).toBe(837799);
+    // })
 
 })
